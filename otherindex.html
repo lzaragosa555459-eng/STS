@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>AI System</title>
+
+<style>
+body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    font-family: Arial, sans-serif;
+    color: red;
+}
+
+/* MATRIX BACKGROUND */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* CENTER CONTENT */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* LOGO */
+.logo {
+    width: 220px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px red;
+    animation: pulse 2s infinite alternate;
+}
+
+/* TEXT */
+h1 {
+    font-size: 48px;
+    letter-spacing: 4px;
+    margin-top: 20px;
+    text-shadow: 0 0 20px red;
+}
+
+p {
+    color: #ff4d4d;
+    margin-top: 10px;
+}
+
+/* BUTTON */
+button {
+    margin-top: 20px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid red;
+    color: red;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: red;
+    color: black;
+    box-shadow: 0 0 20px red;
+}
+
+/* ANIMATION */
+@keyframes pulse {
+    from { box-shadow: 0 0 20px red; }
+    to { box-shadow: 0 0 60px red; }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="matrix"></canvas>
+
+<div class="container">
+    <img src="ChatGPT Image Apr 24, 2026, 11_13_54 PM.png" class="logo">
+</div>
+
+<script>
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+
+canvas.height = window.innerHeight;
+canvas.width = window.innerWidth;
+
+const letters = "10101010101010101010";
+const fontSize = 14;
+const columns = canvas.width / fontSize;
+
+const drops = [];
+for (let x = 0; x < columns; x++) {
+    drops[x] = 1;
+}
+
+function draw() {
+    ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "red";
+    ctx.font = fontSize + "px monospace";
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = letters.charAt(Math.floor(Math.random() * letters.length));
+        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+setInterval(draw, 33);
+</script>
+
+</body>
+</html>
