@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLUX Security Terminal</title>
+
+<style>
+body{
+    margin:0;
+    background:#020617;
+    font-family:Consolas, monospace;
+    color:#38bdf8;
+    overflow:hidden;
+}
+
+/* TOP BAR */
+.topbar{
+    height:40px;
+    background:#03111f;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:0 20px;
+    border-bottom:1px solid #0ea5e9;
+    font-size:14px;
+}
+
+/* TERMINAL WINDOW */
+.terminal{
+    width:min(95%,1200px);
+    height:85vh;
+    margin:30px auto;
+    border:2px solid #38bdf8;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:30px;
+    box-sizing:border-box;
+    background:#020617;
+    box-shadow:0 0 25px rgba(56,189,248,0.2);
+    position:relative;
+}
+
+/* LOGO CONTAINER */
+.logo{
+    width:45%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+/* IMAGE */
+.logo img{
+    width:100%;
+    max-width:400px;
+    height:auto;
+    object-fit:contain;
+    filter: drop-shadow(0 0 15px #38bdf8);
+}
+
+/* SYSTEM INFO */
+.info{
+    width:50%;
+    font-size:18px;
+    line-height:1.7;
+}
+
+.info strong{
+    color:#60a5fa;
+}
+
+/* PROMPT */
+.prompt{
+    position:absolute;
+    bottom:40px;
+    left:70px;
+    font-size:22px;
+    color:#38bdf8;
+}
+
+/* SYSTEM BREACH OVERLAY */
+.breach-overlay{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%) scale(0.9);
+    padding:30px 60px;
+    border:3px solid #ff1e1e;
+    background:rgba(80, 0, 0, 0.35);
+    color:#ff3b3b;
+    font-size:3rem;
+    font-weight:bold;
+    letter-spacing:6px;
+    text-transform:uppercase;
+    box-shadow:
+        0 0 20px #ff0000,
+        0 0 40px rgba(255,0,0,0.6);
+    text-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff3333;
+    z-index:10;
+    pointer-events:none;
+
+    opacity:0;
+    transition:all 0.6s ease;
+}
+
+.breach-overlay.show{
+    opacity:1;
+    transform:translate(-50%, -50%) scale(1);
+    animation:breachPulse 1s infinite;
+}
+
+/* Pulse Animation */
+@keyframes breachPulse{
+    0%,100%{
+        transform:translate(-50%, -50%) scale(1);
+        opacity:1;
+    }
+    50%{
+        transform:translate(-50%, -50%) scale(1.05);
+        opacity:0.85;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+    <div>1: Terminal &nbsp;&nbsp; 2: Monitor</div>
+    <div>CPU 2.35% | RAM 2.84G | Disk 62G</div>
+</div>
+
+<div class="terminal">
+
+    <!-- SYSTEM BREACH ALERT -->
+    <div class="breach-overlay" id="breachOverlay">
+        SYSTEM BREACH
+    </div>
+
+    <div class="logo">
+        <img src="Gemini_Generated_Image_fnmmbffnmmbffnmm.png" alt="FLUX Logo">
+    </div>
+
+    <div class="info">
+        <div><strong>flux@security</strong></div>
+        <div>----------------------</div>
+
+        <div><strong>OS:</strong> FLUX Security Core</div>
+        <div><strong>Host:</strong> IT Department Mainframe</div>
+        <div><strong>Kernel:</strong> v5.4-protection</div>
+        <div><strong>Firewall:</strong> ACTIVE</div>
+        <div><strong>Threat Monitor:</strong> ONLINE</div>
+        <div><strong>Intrusions Blocked:</strong> 1,284</div>
+        <div><strong>AI Surveillance:</strong> ENABLED</div>
+        <div><strong>Admin Override:</strong> FALSE</div>
+        <div><strong>Status:</strong> SECURED</div>
+    </div>
+
+</div>
+
+<div class="prompt">
+    flux@security:~$ █
+</div>
+
+<script>
+setTimeout(() => {
+    document.getElementById("breachOverlay").classList.add("show");
+}, 5000);
+</script>
+</body>
+</html>
