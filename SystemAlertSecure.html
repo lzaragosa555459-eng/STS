@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Secure System Panel</title>
+
+<style>
+body {
+    margin: 0;
+    background: #0b0f14;
+    font-family: monospace;
+    color: #00ff9f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main panel */
+.panel {
+    border: 2px solid #00ff9f;
+    padding: 30px;
+    width: 400px;
+    text-align: center;
+    background: rgba(0,0,0,0.7);
+    box-shadow: 0 0 20px #00ff9f;
+}
+
+/* Status text */
+.status {
+    font-size: 20px;
+    margin-bottom: 20px;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.4; }
+    100% { opacity: 1; }
+}
+
+/* Button */
+button {
+    background: transparent;
+    border: 1px solid #00ff9f;
+    color: #00ff9f;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #00ff9f;
+    color: black;
+}
+
+/* Alert box */
+.alert {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid rgb(10, 183, 209);
+    color: rgb(12, 226, 241);
+    animation: blink 0.5s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="panel">
+    <div class="status">🔐 INFORMATION SECURED</div>
+
+    <button onclick="triggerAlert()">Run Security Check</button>
+
+    <div class="alert" id="alertBox">
+        SYSTEM CLEAR: Information Secured.
+    </div>
+</div>
+
+<script>
+function triggerAlert() {
+    const alertBox = document.getElementById("alertBox");
+
+    alertBox.style.display = "block";
+
+    setTimeout(() => {
+        alertBox.style.display = "none";
+    }, 3000);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>System Alert</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: red;
+    font-family: monospace;
+    overflow: hidden;
+}
+
+/* BACKGROUND FLASH */
+body.flash {
+    animation: bgFlash 0.5s infinite;
+}
+
+@keyframes bgFlash {
+    0% { background: black; }
+    50% { background: #200000; }
+    100% { background: black; }
+}
+
+/* MAIN PANEL */
+.alert-box {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid red;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 0 40px red;
+    background: rgba(0,0,0,0.8);
+    animation: flicker 1s infinite;
+}
+
+/* BIG WARNING TEXT */
+h1 {
+    font-size: 60px;
+    letter-spacing: 5px;
+    margin: 0;
+    text-shadow: 0 0 20px red;
+}
+
+/* SUBTEXT */
+p {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #ff4d4d;
+}
+
+/* GLITCH EFFECT */
+.glitch {
+    position: relative;
+    display: inline-block;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.glitch::before {
+    animation: glitchTop 1s infinite;
+    color: red;
+}
+
+.glitch::after {
+    animation: glitchBottom 1s infinite;
+    color: #ff0000;
+}
+
+@keyframes glitchTop {
+    0% { clip-path: inset(0 0 80% 0); transform: translate(-2px, -2px); }
+    50% { clip-path: inset(10% 0 60% 0); transform: translate(2px, 2px); }
+    100% { clip-path: inset(0 0 80% 0); transform: translate(-2px, -2px); }
+}
+
+@keyframes glitchBottom {
+    0% { clip-path: inset(80% 0 0 0); transform: translate(2px, 2px); }
+    50% { clip-path: inset(60% 0 10% 0); transform: translate(-2px, -2px); }
+    100% { clip-path: inset(80% 0 0 0); transform: translate(2px, 2px); }
+}
+
+/* FLICKER */
+@keyframes flicker {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+}
+
+/* SCANNING LINE */
+.scan {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: red;
+    top: 0;
+    animation: scanMove 3s linear infinite;
+}
+
+@keyframes scanMove {
+    0% { top: 0; }
+    100% { top: 100%; }
+}
+</style>
+</head>
+
+<body class="flash">
+
+<div class="scan"></div>
+
+<div class="alert-box">
+    <h1 class="glitch" data-text="SYSTEM BREACH">SYSTEM BREACH</h1>
+    <p>UNAUTHORIZED ACCESS DETECTED</p>
+    <p>CONTROL OVERRIDE IN PROGRESS...</p>
+</div>
+
+</body>
+</html>

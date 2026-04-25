@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>System Override</title>
+
+<style>
+body {
+    margin: 0;
+    background: black;
+    font-family: monospace;
+    color: #ff0033;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* main box */
+.container {
+    width: min(90%, 700px);
+    border: 2px solid #ff0033;
+    padding: 30px;
+    background: rgba(0,0,0,0.85);
+    box-shadow: 0 0 25px #ff0033;
+    text-align: center;
+    animation: flicker 1.5s infinite;
+}
+
+/* flicker effect */
+@keyframes flicker {
+    0% { opacity: 1; }
+    45% { opacity: 0.7; }
+    50% { opacity: 0.2; }
+    55% { opacity: 1; }
+    100% { opacity: 0.9; }
+}
+
+/* text styles */
+.title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.message {
+    font-size: clamp(14px, 2vw, 18px);
+    line-height: 1.6;
+    color: #ffffff;
+}
+
+.glitch {
+    color: #ff0033;
+    text-shadow: 2px 0 blue, -2px 0 cyan;
+    animation: glitch 0.3s infinite;
+}
+
+@keyframes glitch {
+    0% { transform: translate(0); }
+    25% { transform: translate(-1px, 1px); }
+    50% { transform: translate(1px, -1px); }
+    75% { transform: translate(-1px, -1px); }
+    100% { transform: translate(0); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="title">⚠ SYSTEM ADMIN OVERRIDE DETECTED ⚠</div>
+
+    <div class="message">
+        Teacher was shocked that he can’t access his account also.<br><br>
+
+        <span class="glitch">
+            "Control transferred. You are no longer the admin."
+        </span>
+    </div>
+
+</div>
+
+</body>
+</html>

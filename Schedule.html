@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flux AI Schedule Dashboard</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Inter',sans-serif;
+}
+
+body{
+    background:#0d0d0d;
+    color:white;
+    min-height:100vh;
+    padding:30px;
+}
+
+.dashboard{
+    max-width:1400px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:350px 1fr;
+    gap:25px;
+}
+
+/* CALENDAR PANEL */
+.calendar-panel{
+    background:#121212;
+    border:1px solid #222;
+    border-radius:20px;
+    padding:25px;
+}
+
+.calendar-title{
+    color:#00ff99;
+    font-size:22px;
+    margin-bottom:20px;
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:20px;
+    font-weight:600;
+}
+
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+    text-align:center;
+}
+
+.day-label{
+    color:#777;
+    font-size:12px;
+    font-weight:600;
+}
+
+.day{
+    padding:12px 0;
+    border-radius:12px;
+    background:#181818;
+    transition:.3s;
+}
+
+.day:hover{
+    background:#222;
+}
+
+.active-day{
+    background:#00ff99;
+    color:black;
+    font-weight:700;
+}
+
+/* SCHEDULE PANEL */
+.schedule-container{
+    background:#121212;
+    border:1px solid #222;
+    border-radius:20px;
+    padding:30px;
+}
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.header h1{
+    color:#00ff99;
+    font-size:28px;
+}
+
+.generated{
+    color:#888;
+    font-size:14px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+th, td{
+    padding:18px;
+    text-align:left;
+    border-bottom:1px solid #222;
+}
+
+th{
+    background:#181818;
+    color:#00ff99;
+}
+
+tr:hover{
+    background:#1a1a1a;
+}
+
+.priority{
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.high{
+    background:#ff3b3b22;
+    color:#ff5555;
+}
+
+.medium{
+    background:#ffaa0022;
+    color:#ffbb33;
+}
+
+.low{
+    background:#00ff9922;
+    color:#00ff99;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+    .dashboard{
+        grid-template-columns:1fr;
+    }
+
+    .schedule-container{
+        overflow-x:auto;
+    }
+
+    table{
+        min-width:700px;
+    }
+}
+.welcome-logo img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid #00ff99;
+}
+</style>
+</head>
+<body>
+
+<div class="dashboard">
+
+    <!-- CALENDAR -->
+    <div class="calendar-panel">
+        <div class="calendar-title">📅 Flux Calendar</div>
+
+        <div class="calendar-header">
+            <span>April 2026</span>
+            <span>AI Sync</span>
+        </div>
+
+        <div class="calendar-grid">
+            <div class="day-label">Sun</div>
+            <div class="day-label">Mon</div>
+            <div class="day-label">Tue</div>
+            <div class="day-label">Wed</div>
+            <div class="day-label">Thu</div>
+            <div class="day-label">Fri</div>
+            <div class="day-label">Sat</div>
+
+            <div></div><div></div><div></div>
+            <div class="day">1</div>
+            <div class="day">2</div>
+            <div class="day">3</div>
+            <div class="day">4</div>
+
+            <div class="day">5</div>
+            <div class="day">6</div>
+            <div class="day">7</div>
+            <div class="day">8</div>
+            <div class="day">9</div>
+            <div class="day">10</div>
+            <div class="day">11</div>
+
+            <div class="day">12</div>
+            <div class="day">13</div>
+            <div class="day">14</div>
+            <div class="day">15</div>
+            <div class="day">16</div>
+            <div class="day">17</div>
+            <div class="day">18</div>
+
+            <div class="day">19</div>
+            <div class="day">20</div>
+            <div class="day">21</div>
+            <div class="day">22</div>
+            <div class="day">23</div>
+            <div class="day">24</div>
+            <div class="day active-day">25</div>
+
+            <div class="day">26</div>
+            <div class="day">27</div>
+            <div class="day">28</div>
+            <div class="day">29</div>
+            <div class="day">30</div>
+        </div>
+    </div>
+
+    <!-- SCHEDULE -->
+    <div class="schedule-container">
+        <div class="header">
+        <div class="welcome-logo">
+            <img src="Gemini_Generated_Image_cgfzflcgfzflcgfz(1).png" alt="">
+        </div>
+            <h1> Flux AI Generated Schedule</h1>
+            <div class="generated">Generated: April 25, 2026</div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Task</th>
+                    <th>Department</th>
+                    <th>Priority</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>April 26</td>
+                    <td>08:00 AM</td>
+                    <td>Security Diagnostics</td>
+                    <td>Systems</td>
+                    <td><span class="priority high">HIGH</span></td>
+                </tr>
+                <tr>
+                    <td>April 26</td>
+                    <td>01:00 PM</td>
+                    <td>Behavior Monitoring</td>
+                    <td>AI Core</td>
+                    <td><span class="priority medium">MEDIUM</span></td>
+                </tr>
+                <tr>
+                    <td>April 27</td>
+                    <td>09:30 AM</td>
+                    <td>Neural Sync Calibration</td>
+                    <td>Development</td>
+                    <td><span class="priority low">LOW</span></td>
+                </tr>
+                <tr>
+                    <td>April 27</td>
+                    <td>03:00 PM</td>
+                    <td>Protocol Evaluation</td>
+                    <td>Management</td>
+                    <td><span class="priority high">HIGH</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>
