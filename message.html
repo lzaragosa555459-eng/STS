@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Voice Messenger Chat</title>
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    background: #eef0f3;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* MAIN CHAT */
+.chat {
+    width: min(95%, 520px);
+    height: 90vh;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+/* HEADER */
+.header {
+    padding: 15px;
+    text-align: center;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+}
+
+/* MESSAGES AREA */
+.box {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    background: #f9fafb;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* VOICE MESSAGE */
+.voice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 18px;
+    max-width: 80%;
+}
+
+/* RECEIVER */
+.them {
+    background: #e5e7eb;
+    align-self: flex-start;
+}
+
+/* SENDER */
+.me {
+    background: #2563eb;
+    color: white;
+    align-self: flex-end;
+}
+
+/* PLAY BUTTON */
+.play {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    color: #2563eb;
+    cursor: pointer;
+}
+
+/* WAVE */
+.wave {
+    display: flex;
+    gap: 2px;
+}
+
+.wave span {
+    width: 3px;
+    background: currentColor;
+    border-radius: 2px;
+    animation: wave 1s infinite ease-in-out;
+}
+
+.wave span:nth-child(1) { height: 8px; animation-delay: 0s; }
+.wave span:nth-child(2) { height: 14px; animation-delay: 0.1s; }
+.wave span:nth-child(3) { height: 6px; animation-delay: 0.2s; }
+.wave span:nth-child(4) { height: 18px; animation-delay: 0.3s; }
+.wave span:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+
+@keyframes wave {
+    0%,100% { transform: scaleY(0.6); }
+    50% { transform: scaleY(1.2); }
+}
+
+/* INPUT AREA (MESSENGER STYLE) */
+.input-area {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid #ddd;
+    background: white;
+    gap: 10px;
+}
+
+input {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    background: #f3f4f6;
+    border-radius: 20px;
+}
+
+button {
+    width: 45px;
+    border: none;
+    background: #2563eb;
+    color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+</style>
+</head>
+
+<body>
+
+<div class="chat">
+
+    <div class="header">
+        Messenger
+    </div>
+
+    <div class="box" id="box">
+
+        <!-- SAMPLE MESSAGES -->
+        <div class="voice them">
+            <div class="play"><i class="fa-solid fa-play"></i></div>
+            <div class="wave"><span></span><span></span><span></span><span></span><span></span></div>
+        </div>
+
+        <div class="voice me">
+            Who is this
+        </div>
+
+    </div>
+
+    <!-- INPUT -->
+    <div class="input-area">
+        <input type="text" id="input" placeholder="Type a message...">
+        <button onclick="send()">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+    </div>
+
+</div>
+
+<script>
+function send() {
+    const input = document.getElementById("input");
+    const text = input.value.trim();
+    if (!text) return;
+
+    const box = document.getElementById("box");
+
+    // create voice-style message bubble
+    const div = document.createElement("div");
+    div.className = "voice me";
+
+    div.innerHTML = `
+        <div class="play"><i class="fa-solid fa-play"></i></div>
+        <div style="font-size:13px">${text}</div>
+    `;
+
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+
+    input.value = "";
+}
+</script>
+
+</body>
+</html>
