@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLUX AI Warning Panel</title>
+
+<style>
+body{
+    margin:0;
+    background:radial-gradient(circle at center, #180000 0%, #050505 75%);
+    font-family:Consolas, monospace;
+    color:#ff4d4d;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    overflow:hidden;
+}
+
+/* PANEL */
+.panel{
+    width:90%;
+    max-width:1200px;
+    background:rgba(0,0,0,0.88);
+    border:2px solid #ff3333;
+    border-radius:20px;
+    box-shadow:0 0 35px red;
+    padding:30px;
+    text-align:center;
+    animation:dangerPulse 5s infinite;
+}
+
+/* WARNING ICON */
+.warning-icon{
+    font-size:85px;
+    animation:blink 1s infinite;
+    margin-bottom:10px;
+}
+
+/* TITLE */
+h1{
+    margin:10px 0 30px;
+    font-size:36px;
+    letter-spacing:4px;
+    text-shadow:0 0 15px red;
+}
+
+/* GRID */
+.students{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    align-items:center;
+}
+
+/* CARD */
+.student{
+    background:rgba(255,0,0,0.08);
+    border:2px solid rgba(255,0,0,0.5);
+    border-radius:15px;
+    padding:15px;
+    box-shadow:0 0 15px rgba(255,0,0,0.4);
+    transition:.3s;
+}
+
+.student:hover{
+    transform:scale(1.05);
+    box-shadow:0 0 25px red;
+}
+
+.student img{
+    width:100%;
+    height:260px;
+    object-fit:cover;
+    border-radius:10px;
+    border:2px solid red;
+}
+
+.student h2{
+    margin-top:15px;
+    color:white;
+    text-shadow:0 0 10px red;
+}
+
+.alert-text{
+    margin-top:25px;
+    font-size:18px;
+    letter-spacing:3px;
+    color:#ff9999;
+}
+
+/* ANIMATIONS */
+@keyframes blink{
+    0%,100%{opacity:1;}
+    50%{opacity:.3;}
+}
+
+@keyframes dangerPulse{
+    0%,100%{
+        box-shadow:0 0 20px red;
+    }
+    50%{
+        box-shadow:0 0 60px red;
+    }
+}
+</style>
+</head>
+<body>
+
+<div class="panel">
+    <div class="warning-icon">⚠</div>
+    <h1>FLUX AI SECURITY ALERT</h1>
+
+    <div class="students">
+        <div class="student">
+            <img src="decb06d63aeed8a4c078e57305bbffb2.jpg" alt="">
+            <h2>Liam Santos</h2>
+        </div>
+
+        <div class="student">
+            <img src="fc412a584219465dd4c8c50368950954.jpg" alt="">
+            <h2>Noah Cruz</h2>
+        </div>
+
+        <div class="student">
+            <img src="ecc9b97655e5fbfd5d10a485059d6fce.jpg" alt="">
+            <h2>Chloe Torres</h2>
+        </div>
+    </div>
+
+    <div class="alert-text">
+        IDENTIFIED AS THREATS TO ACADEMIC INTEGRITY
+    </div>
+</div>
+
+</body>
+</html>
