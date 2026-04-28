@@ -59,22 +59,37 @@ body{
 }
 
 .header{
-    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:20px;
     margin-bottom:25px;
+    flex-wrap:wrap;
+    text-align:left;
 }
 
-.header h1{
-    font-size:3rem;
+.header img{
+    width:90px;
+    height:90px;
+    object-fit:cover;
+    border-radius:50%;
+    border:2px solid #00f7ff;
+    filter:drop-shadow(0 0 10px #00f7ff);
+}
+
+.header-text h1{
+    font-size:2.4rem;
     color:#00f7ff;
     text-shadow:0 0 20px #00f7ff;
-    letter-spacing:4px;
+    letter-spacing:3px;
+    margin:0;
 }
 
-.header h2{
+.header-text h2{
+    font-size:1rem;
     color:#ff4444;
-    margin-top:10px;
-    font-size:1.4rem;
     text-shadow:0 0 10px red;
+    margin-top:6px;
 }
 
 .notice{
@@ -195,8 +210,12 @@ body{
     </div>
 
     <div class="header">
-        <h1>FLUX AI COMPLIANCE BOARD</h1>
-        <h2>DEPARTMENT OF STUDENT COMPLIANCE</h2>
+        <img src="Gemini_Generated_Image_cgfzflcgfzflcgfz(1).png" alt="FLUX Logo">
+        
+        <div class="header-text">
+            <h1>FLUX AI COMPLIANCE BOARD</h1>
+            <h2>DEPARTMENT OF STUDENT COMPLIANCE</h2>
+        </div>
     </div>
 
     <div class="notice">
